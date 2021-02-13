@@ -6,7 +6,7 @@ import Motorola from '../assets/motorola-moto-g5-plus-1.jpg'
 import Moto from '../assets/motorola-moto-g4-3.jpg'
 import Sony from '../assets/003.jpg'
 import {Footer} from "../shared/Footer";
-import {useHistory} from "react-router-dom";
+import {Redirect, useHistory, useParams} from "react-router-dom";
 
 
 export const Home = () => {
@@ -14,7 +14,8 @@ export const Home = () => {
     const items = [
         {
             id: '1234',
-            img: galaxy,
+            img: '/static/media/samsung-galaxy-s9-xxl.8abfdaf8.jpg',
+            // img: galaxy,
             productName: 'Samsung Galaxy S9',
             unitPrice: 2741.98
         },
@@ -50,8 +51,14 @@ export const Home = () => {
         }
     ]
     const history = useHistory()
+    console.log('history', history)
+    const params = useParams()
+    console.log(params)
     const handleClick = (index) => {
-        history.push('/details')
+        history.push('/details', {id: 1})
+        const item = items[index]
+        const search = `?img=${item.img}&title=${item.productName}&price=${item.unitPrice}&unit=${1}`
+        history.push({pathname: '/details', search: search, state: {data: items[index]}})
     }
 
     return (
@@ -68,7 +75,7 @@ export const Home = () => {
                                         <img src={item.img}
                                              className="card-img-top"
 
-                                             style={{'max-width': '90%', 'max-height': '90%'}}
+                                             style={{maxWidth: '90%', maxHeight: '90%'}}
                                              alt="image"/>
 
                                         <div className="card-body text-center mw-100 d-block">
