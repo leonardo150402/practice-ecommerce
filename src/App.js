@@ -6,7 +6,8 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    Link,
+    Redirect
 } from "react-router-dom";
 import {Details} from "./pages/Details";
 
@@ -19,10 +20,10 @@ function App() {
                     <Switch>
                         <Route path="/details" component={Details}/>
                         <Route path="/" component={Home}/>
+                        <Redirect to="/"/>
                     </Switch>
                 </div>
             </Router>
-            {/*<HomeScreen/>*/}
         </>
     )
 }
