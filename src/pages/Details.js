@@ -26,6 +26,23 @@ export const Details = () => {
 
     const handleCheckOut = () => {
         refButton.current.disabled = true
+
+        const preference = {
+            payer: {
+                name: 'Lalo Landa',
+                identification: {
+                    type: 'dni',
+                    number: '22334445'
+                },
+                email: 'test_user_46542185@testuser.com',
+                address: {
+                    "street_name": "Insurgentes Sur",
+                    "street_number": null,
+                    "zip_code": ""
+                }
+            }
+        }
+
         const script = document.createElement("script");
 
         // The source domain must be completed according to the site for which you are integrating.
