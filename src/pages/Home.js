@@ -16,8 +16,6 @@ export const Home = () => {
         {
             id: '1234',
             img: galaxy,
-            // img: '/static/media/samsung-galaxy-s9-xxl.8abfdaf8.jpg',
-            // img: galaxy,
             productName: 'Samsung Galaxy S9',
             unitPrice: 2741.98
         },

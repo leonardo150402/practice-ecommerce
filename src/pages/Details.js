@@ -1,11 +1,9 @@
 import React, {useRef, useState} from 'react'
-import img from "../assets/motorola-moto-g4-3.jpg";
 import {useLocation} from "react-router-dom";
 import {useQuery} from "../hooks/use-query";
-import dotenv from "dotenv";
 
 export const Details = () => {
-    require('dotenv').config()
+
     const [quantity, setQuantity] = useState(1)
     const location = useLocation()
     const query = useQuery(location.search)
@@ -50,7 +48,7 @@ export const Details = () => {
             items: [
                 {
                     id: "1234",
-                    picture_url: "https://shionaoi-mp-commerce-nodejs.herokuapp.com/assets/samsung-galaxy-s9-xxl.jpg",
+                    picture_url: `${process.env.REACT_APP_URL_FRONT}${data.img}`,
                     // title: "Samsung Galaxy S9",
                     title: data.title,
                     description: "Dispositivo móvil de Tienda e-commerce",
@@ -58,7 +56,7 @@ export const Details = () => {
                     unit_price: data.price
                 }
             ],
-            external_reference: "javier.jail.cornejo@gmail.com",
+            external_reference: `${process.env.REACT_APP_EXTERNAL_REFERENCE}`,
             payment_methods: {
                 excluded_payment_methods: [
                     {
@@ -82,6 +80,7 @@ export const Details = () => {
         }
 
         console.log('preference', preference)
+        console.log(`${process.env.REACT_APP_URL_BACK}/mercado/create_preference`)
         fetch(`${process.env.REACT_APP_URL_BACK}/mercado/create_preference`, {
             method: "POST",
             headers: {
