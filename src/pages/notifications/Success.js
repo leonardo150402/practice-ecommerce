@@ -23,16 +23,17 @@ export const Success = () => {
                 <div className="col-sm-12 col-sm-offset-3">
                     <div className="card text-center">
                         <div className="card-body">
-                            <h2 style={{"color": "#0fad00"}}>
+                            <h2 style={{"color": "#0fad00", fontSize: '48px'}}>
                                 Success
                             </h2>
-                            <p>Payment Method Id <strong>{data.payment_type}</strong></p>
+                            <p>Payment Type <strong>{data.payment_type}</strong></p>
+                            <p>External Reference <strong>{data.external_reference}</strong></p>
+                            <p>ID de Pago <strong>{data.collection_id}</strong></p>
                             <p style={{fontSize: "20px", color: "#5C5C5C"}}>
                                 Thank you for verifying your Mobile No.We have sent
                                 you an email "faisalkhan.chat@gmail.com" with your details
                                 Please go to your above email now and login.
                             </p>
-                            <a href="" className="btn btn-success"> Log in </a>
                         </div>
                     </div>
 

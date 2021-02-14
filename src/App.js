@@ -15,6 +15,7 @@ import {Pending} from "./pages/notifications/Pending";
 function App() {
     return (
         <div>
+            <script src="https://www.mercadopago.com/v2/security.js" view="home"></script>
             <Header/>
             <Router>
                 <div>

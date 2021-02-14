@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import {useLocation} from "react-router-dom";
+import {Redirect, useLocation} from "react-router-dom";
 import {useQuery} from "../hooks/use-query";
 
 export const Details = () => {
@@ -79,8 +79,6 @@ export const Details = () => {
             notification_url: `${process.env.REACT_APP_URL_BACK}/mercado/notifications?source_news=webhooks`
         }
 
-        console.log('preference', preference)
-        console.log(`${process.env.REACT_APP_URL_BACK}/mercado/create_preference`)
         fetch(`${process.env.REACT_APP_URL_BACK}/mercado/create_preference`, {
             method: "POST",
             headers: {
@@ -88,20 +86,21 @@ export const Details = () => {
             },
             body: JSON.stringify(preference)
         }).then((result) => {
-            console.log(result)
             return result.json()
 
         }).then((preference) => {
-            const script = document.createElement("script");
-            console.log(preference)
-
-            // The source domain must be completed according to the site for which you are integrating.
-            // For example: for Argentina ".com.ar" or for Brazil ".com.br".
-            script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-            script.type = "text/javascript";
-            script.dataset.preferenceId = preference.preference_id
-            refContainer.current.innerHTML = "";
-            refContainer.current.appendChild(script)
+            window.location = preference.init_point
+            // return <Redirect to={preference.init_point}/>
+            // const script = document.createElement("script");
+            // console.log(preference)
+            //
+            // // The source domain must be completed according to the site for which you are integrating.
+            // // For example: for Argentina ".com.ar" or for Brazil ".com.br".
+            // script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+            // script.type = "text/javascript";
+            // script.dataset.preferenceId = preference.preference_id
+            // refContainer.current.innerHTML = "";
+            // refContainer.current.appendChild(script)
         }).catch((e) => {
             console.log(e)
         })
@@ -117,6 +116,7 @@ export const Details = () => {
     return (
 
         <div className="row">
+            <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
             <h3 className="ms-5">Smartphones</h3>
             <div className="container mt-3">
                 <div className="mb-3 w-75">

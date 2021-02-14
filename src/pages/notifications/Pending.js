@@ -1,31 +1,19 @@
 import React from 'react'
-import logo from '../../assets/music-audio-alp-201709.jpg'
+import {Link} from "react-router-dom";
 
 export const Pending = () => {
 
     return (
         <div className="container">
             <div className="row">
-                <div className="col-md-12">
+                <div className="col-md-12 text-center">
                     <div className="error-template">
-                        <h1>
-                            Oops!</h1>
-                        <h2>
-                            404 Not Found</h2>
-                        <div className="error-details">
-                            Sorry, an error has occured, Requested page not found!
-                        </div>
+                        <h1 className="text-warning fs-1">SU PAGO SE ENCUENTRA PENDIENTE</h1>
+                        <h5 className="text-muted">Tu pago esta pendiente</h5>
                         <div className="error-actions">
-                            <a href="http://www.jquery2dotnet.com" className="btn btn-primary btn-lg">
-                                <span
-                                    className="glyphicon glyphicon-home">
-
-                            </span>
-                                Take Me Home </a><a href="http://www.jquery2dotnet.com"
-                                                    className="btn btn-default btn-lg"><span
-                            className="glyphicon glyphicon-envelope">
-
-                        </span> Contact Support </a>
+                            <Link to="/" className="btn btn-primary btn-lg">
+                                <span className="glyphicon glyphicon-home"></span>
+                                Ir al principio </Link>
                         </div>
                     </div>
                 </div>

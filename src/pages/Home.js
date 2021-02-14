@@ -63,6 +63,7 @@ export const Home = () => {
 
     return (
         <>
+            <script src="https://www.mercadopago.com/v2/security.js" view="search"></script>
             <div className="container">
                 <div className="row">
                     <h3 className="text-muted">Smartphones</h3>
