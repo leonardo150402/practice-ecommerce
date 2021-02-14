@@ -11,7 +11,7 @@ export const Pending = () => {
                         <h1 className="text-warning fs-1">SU PAGO SE ENCUENTRA PENDIENTE</h1>
                         <h5 className="text-muted">Tu pago esta pendiente</h5>
                         <div className="error-actions">
-                            <Link to="/" className="btn btn-primary btn-lg">
+                            <Link to="/" className="btn btn-warning btn-lg">
                                 <span className="glyphicon glyphicon-home"></span>
                                 Ir al principio </Link>
                         </div>

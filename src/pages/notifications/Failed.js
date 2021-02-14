@@ -11,7 +11,7 @@ export const Failed = () => {
                         <h1 className="text-danger fs-1">PAGO FALLIDO</h1>
                         <h5 className="text-muted">Tu pago no se pudo completar</h5>
                         <div className="error-actions">
-                            <Link to="/" className="btn btn-primary btn-lg">
+                            <Link to="/" className="btn btn-danger btn-lg">
                                 <span className="glyphicon glyphicon-home"></span>
                                 Ir al principio </Link>
                         </div>

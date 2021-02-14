@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import {Redirect, useLocation} from "react-router-dom";
 import {useQuery} from "../hooks/use-query";
 
@@ -90,33 +90,20 @@ export const Details = () => {
 
         }).then((preference) => {
             window.location = preference.init_point
-            // return <Redirect to={preference.init_point}/>
-            // const script = document.createElement("script");
-            // console.log(preference)
-            //
-            // // The source domain must be completed according to the site for which you are integrating.
-            // // For example: for Argentina ".com.ar" or for Brazil ".com.br".
-            // script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-            // script.type = "text/javascript";
-            // script.dataset.preferenceId = preference.preference_id
-            // refContainer.current.innerHTML = "";
-            // refContainer.current.appendChild(script)
         }).catch((e) => {
             console.log(e)
         })
 
-        // document.getElementById("button-checkout").innerHTML = "hola daniel";
-        // document.querySelector("#button-checkout").appendChild(script);
     }
-    // <script
-    //     src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js"
-    //     data-preference-id='1234'>
-    // </script>
+
+    useEffect(() => {
+        const script = document.getElementById('mercado')
+        script.setAttribute("view", "item")
+    }, [])
 
     return (
 
         <div className="row">
-            <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
             <h3 className="ms-5">Smartphones</h3>
             <div className="container mt-3">
                 <div className="mb-3 w-75">

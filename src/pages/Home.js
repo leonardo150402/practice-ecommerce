@@ -1,5 +1,5 @@
 /** Librerias*/
-import React from 'react'
+import React, {useEffect} from 'react'
 import galaxy from '../assets/samsung-galaxy-s9-xxl.jpg'
 import Lg from '../assets/l6g6.jpg'
 import Iphone from '../assets/iphone.png'
@@ -51,9 +51,7 @@ export const Home = () => {
         }
     ]
     const history = useHistory()
-    console.log('history', history)
     const params = useParams()
-    console.log(params)
     const handleClick = (index) => {
         history.push('/details', {id: 1})
         const item = items[index]
@@ -61,9 +59,13 @@ export const Home = () => {
         history.push({pathname: '/details', search: search, state: {data: items[index]}})
     }
 
+    useEffect(() => {
+        const script = document.getElementById('mercado')
+        script.setAttribute("view", "home")
+    }, [])
+
     return (
         <>
-            <script src="https://www.mercadopago.com/v2/security.js" view="search"></script>
             <div className="container">
                 <div className="row">
                     <h3 className="text-muted">Smartphones</h3>
