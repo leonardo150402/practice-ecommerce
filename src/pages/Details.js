@@ -74,16 +74,16 @@ export const Details = () => {
                 installments: 6,
             },
             back_urls: {
-                success: "http://40d3e1e2575d.ngrok.io/",
-                pending: "http://40d3e1e2575d.ngrok.io/",
-                failure: "http://40d3e1e2575d.ngrok.io/"
+                success: `${process.env.URL_FRONT}/success`,
+                pending: `${process.env.URL_FRONT}/pending`,
+                failure: `${process.env.URL_FRONT}/failure`
             },
             auto_return: "approved",
-            notification_url: "http://40d3e1e2575d.ngrok.io/mercado/notifications?source_news=webhooks"
+            notification_url: `${process.env.URL_BACK}/mercado/notifications?source_news=webhooks`
         }
 
         console.log('preference', preference)
-        fetch("http://40d3e1e2575d.ngrok.io/mercado/create_preference", {
+        fetch(`${process.env.URL_BACK}/mercado/create_preference`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

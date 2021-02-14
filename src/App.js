@@ -10,6 +10,7 @@ import {
 import {Details} from "./pages/Details";
 import {Success} from "./pages/notifications/Success";
 import {Failed} from "./pages/notifications/Failed";
+import {Pending} from "./pages/notifications/Pending";
 
 function App() {
     return (
@@ -20,7 +21,8 @@ function App() {
                     <Switch>
                         <Route path="/details" component={Details}/>
                         <Route path="/success" component={Success}/>
-                        <Route path="/failed" component={Failed}/>
+                        <Route path="/failure" component={Failed}/>
+                        <Route path="/pending" component={Pending}/>
                         <Route path="/" component={Home}/>
 
                         <Redirect to="/"/>
