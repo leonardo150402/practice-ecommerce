@@ -2,8 +2,10 @@ import React, {useRef, useState} from 'react'
 import img from "../assets/motorola-moto-g4-3.jpg";
 import {useLocation} from "react-router-dom";
 import {useQuery} from "../hooks/use-query";
+import dotenv from "dotenv";
 
 export const Details = () => {
+    require('dotenv').config()
     const [quantity, setQuantity] = useState(1)
     const location = useLocation()
     const query = useQuery(location.search)
@@ -60,13 +62,10 @@ export const Details = () => {
             payment_methods: {
                 excluded_payment_methods: [
                     {
-                        id: ""
+                        id: "diners"
                     }
                 ],
                 excluded_payment_types: [
-                    {
-                        id: "diners"
-                    },
                     {
                         id: "atm"
                     }
@@ -74,22 +73,23 @@ export const Details = () => {
                 installments: 6,
             },
             back_urls: {
-                success: `${process.env.URL_FRONT}/success`,
-                pending: `${process.env.URL_FRONT}/pending`,
-                failure: `${process.env.URL_FRONT}/failure`
+                success: `${process.env.REACT_APP_URL_FRONT}/success`,
+                pending: `${process.env.REACT_APP_URL_FRONT}/pending`,
+                failure: `${process.env.REACT_APP_URL_FRONT}/failure`
             },
             auto_return: "approved",
-            notification_url: `${process.env.URL_BACK}/mercado/notifications?source_news=webhooks`
+            notification_url: `${process.env.REACT_APP_URL_BACK}/mercado/notifications?source_news=webhooks`
         }
 
         console.log('preference', preference)
-        fetch(`${process.env.URL_BACK}/mercado/create_preference`, {
+        fetch(`${process.env.REACT_APP_URL_BACK}/mercado/create_preference`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(preference)
         }).then((result) => {
+            console.log(result)
             return result.json()
 
         }).then((preference) => {
