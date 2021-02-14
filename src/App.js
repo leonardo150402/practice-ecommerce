@@ -13,7 +13,7 @@ import {Failed} from "./pages/notifications/Failed";
 
 function App() {
     return (
-        <>
+        <div>
             <Header/>
             <Router>
                 <div>
@@ -27,7 +27,10 @@ function App() {
                     </Switch>
                 </div>
             </Router>
-        </>
+            <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </div>
     )
 }
 
