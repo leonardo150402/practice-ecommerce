@@ -29,32 +29,84 @@ export const Details = () => {
 
         const preference = {
             payer: {
-                name: 'Lalo Landa',
-                identification: {
-                    type: 'dni',
-                    number: '22334445'
+                name: "Lalo",
+                surname: "Landa",
+                email: "test_user_46542185@testuser.com",
+                phone: {
+                    area_code: "52",
+                    number: 5549737300
                 },
-                email: 'test_user_46542185@testuser.com',
+                identification: {
+                    type: "DNI",
+                    number: "22334445"
+                },
                 address: {
-                    "street_name": "Insurgentes Sur",
-                    "street_number": null,
-                    "zip_code": ""
+                    zip_code: "03940",
+                    street_name: "Insurgentes Sur",
+                    street_number: 1602
                 }
-            }
+            },
+            items: [
+                {
+                    id: "1234",
+                    picture_url: "https://shionaoi-mp-commerce-nodejs.herokuapp.com/assets/samsung-galaxy-s9-xxl.jpg",
+                    title: "Samsung Galaxy S9",
+                    description: "Dispositivo móvil de Tienda e-commerce",
+                    quantity: 1,
+                    unit_price: 25
+                }
+            ],
+            external_reference: "javier.jail.cornejo@gmail.com",
+            payment_methods: {
+                excluded_payment_methods: [
+                    {
+                        id: ""
+                    }
+                ],
+                excluded_payment_types: [
+                    {
+                        id: "diners"
+                    },
+                    {
+                        id: "atm"
+                    }
+                ],
+                installments: 6,
+            },
+            back_urls: {
+                success: "http://40d3e1e2575d.ngrok.io/",
+                pending: "http://40d3e1e2575d.ngrok.io/",
+                failure: "http://40d3e1e2575d.ngrok.io/"
+            },
+            auto_return: "approved",
+            notification_url: "http://40d3e1e2575d.ngrok.io/mercado/notifications?source_news=webhooks"
         }
 
-        const script = document.createElement("script");
-
-        // The source domain must be completed according to the site for which you are integrating.
-        // For example: for Argentina ".com.ar" or for Brazil ".com.br".
-        script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
-        script.type = "text/javascript";
-        script.dataset.preferenceId = '12312321';
-        refContainer.current.innerHTML = "";
-        refContainer.current.appendChild(script)
-        // document.getElementById("button-checkout").innerHTML = "hola daniel";
-        // document.querySelector("#button-checkout").appendChild(script);
+        fetch('http://40d3e1e2575d.ngrok.io/mercado/create_preference', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(preference),
+        })
+            .then((response) => {
+                return response.json()
+            })
+            .then((preference) => {
+                console.log(preference)
+                const script = document.createElement("script");
+                script.src = "https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js";
+                script.type = "text/javascript";
+                script.dataset.preferenceId = preference.preference_id;
+                refContainer.current.innerHTML = "";
+                refContainer.current.appendChild(script)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }
+
+
     // <script
     //     src="https://www.mercadopago.com.pe/integrations/v1/web-payment-checkout.js"
     //     data-preference-id='1234'>
@@ -137,7 +189,7 @@ export const Details = () => {
                                         id="btn-checkout"
                                         onClick={handleCheckOut}
                                         className="btn btn-primary w-100">
-                                    Checkout
+                                    Pagar la compra
                                 </button>
                                 <div id="button-checkout"
                                      ref={refContainer}>
