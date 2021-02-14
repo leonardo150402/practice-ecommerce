@@ -1,3 +1,4 @@
+/** Librerias*/
 import React from 'react'
 import galaxy from '../assets/samsung-galaxy-s9-xxl.jpg'
 import Lg from '../assets/l6g6.jpg'
@@ -6,7 +7,7 @@ import Motorola from '../assets/motorola-moto-g5-plus-1.jpg'
 import Moto from '../assets/motorola-moto-g4-3.jpg'
 import Sony from '../assets/003.jpg'
 import {Footer} from "../shared/Footer";
-import {Redirect, useHistory, useParams} from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 
 export const Home = () => {
@@ -14,7 +15,8 @@ export const Home = () => {
     const items = [
         {
             id: '1234',
-            img: '/static/media/samsung-galaxy-s9-xxl.8abfdaf8.jpg',
+            img: galaxy,
+            // img: '/static/media/samsung-galaxy-s9-xxl.8abfdaf8.jpg',
             // img: galaxy,
             productName: 'Samsung Galaxy S9',
             unitPrice: 2741.98
