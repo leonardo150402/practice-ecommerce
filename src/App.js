@@ -1,25 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import {Home} from "./pages/Home";
+import {Header} from "./shared/Header";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
+} from "react-router-dom";
+import {Details} from "./pages/Details";
+import {Success} from "./pages/notifications/Success";
+import {Failed} from "./pages/notifications/Failed";
 
 function App() {
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
+        <div>
+            <Header/>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route path="/details" component={Details}/>
+                        <Route path="/success" component={Success}/>
+                        <Route path="/failed" component={Failed}/>
+                        <Route path="/" component={Home}/>
+
+                        <Redirect to="/"/>
+                    </Switch>
+                </div>
+            </Router>
+            <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
         </div>
-    );
+    )
 }
 
 export default App;
